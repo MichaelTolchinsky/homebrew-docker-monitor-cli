@@ -1,3 +1,5 @@
+docker.io/go-docker v1.0.0 h1:VdXS/aNYQxyA9wdLD5z8Q8Ro688/hG8HzKxYVEVbE6s=
+docker.io/go-docker v1.0.0/go.mod h1:7tiAn5a0LFmjbPDbyTPOaTTOuG1ZRNXdPA6RvKY+fpY=
 github.com/Microsoft/go-winio v0.6.1 h1:9/kr64B9VUZrLm5YYwbGtUJnMgqWVOdUAXu6Migciow=
 github.com/Microsoft/go-winio v0.6.1/go.mod h1:LRdKpFKfdobln8UmuiYcKPot9D2v6svN5+sAH+4kjUM=
 github.com/docker/distribution v2.8.2+incompatible h1:T3de5rq0dB1j30rp0sA2rER+m322EBzniBPB6ZIzuh8=

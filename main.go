@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"docler-monitor-cli/helper"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -53,10 +54,10 @@ func main() {
 					break
 				}
 
-				cpuUsage := fmt.Sprintf("%.2f%%", calculateCPUPercentage(result))
-				memUsage := fmt.Sprintf("%s / %s", calculateMemUsage(result), calculateMemLimit(result))
-				memPercent := fmt.Sprintf("%.2f%%", calculateMemPercentage(result))
-				blockIO := fmt.Sprintf("%s / %s", calculateBlockInput(result), calculateBlockOutput(result))
+				cpuUsage := fmt.Sprintf("%.2f%%", helper.CalculateCPUPercentage(result))
+				memUsage := fmt.Sprintf("%s / %s", helper.CalculateMemUsage(result), helper.CalculateMemLimit(result))
+				memPercent := fmt.Sprintf("%.2f%%", helper.CalculateMemPercentage(result))
+				blockIO := fmt.Sprintf("%s / %s", helper.CalculateBlockInput(result), helper.CalculateBlockOutput(result))
 				pids := fmt.Sprintf("%d", result.PidsStats.Current)
 
 				// Add the stats to the table
@@ -73,59 +74,4 @@ func main() {
 
 	// wait indefinitly
 	select {}
-}
-
-// Helper functions to calculate different stats
-
-func calculateCPUPercentage(stats types.Stats) float64 {
-	cpuDelta := float64(stats.CPUStats.CPUUsage.TotalUsage) - float64(stats.PreCPUStats.CPUUsage.TotalUsage)
-	systemDelta := float64(stats.CPUStats.SystemUsage) - float64(stats.PreCPUStats.SystemUsage)
-	cpuPercent := (cpuDelta / systemDelta) * float64(len(stats.CPUStats.CPUUsage.PercpuUsage)) * 100.0
-	return cpuPercent
-}
-
-func calculateMemUsage(stats types.Stats) string {
-	memUsage := stats.MemoryStats.Usage - stats.MemoryStats.Stats["cache"]
-	return formatBytes(memUsage)
-}
-
-func calculateMemLimit(stats types.Stats) string {
-	return formatBytes(stats.MemoryStats.Limit)
-}
-
-func calculateMemPercentage(stats types.Stats) float64 {
-	memPercent := float64(stats.MemoryStats.Usage) / float64(stats.MemoryStats.Limit) * 100.0
-	return memPercent
-}
-
-func calculateBlockInput(stats types.Stats) string {
-	blockInput := calculateBlkioValue(stats.BlkioStats.IoServiceBytesRecursive, "Read")
-	return formatBytes(blockInput)
-}
-
-func calculateBlockOutput(stats types.Stats) string {
-	blockOutput := calculateBlkioValue(stats.BlkioStats.IoServiceBytesRecursive, "Write")
-	return formatBytes(blockOutput)
-}
-
-func calculateBlkioValue(blkioStats []types.BlkioStatEntry, opType string) uint64 {
-	for _, blkioStat := range blkioStats {
-		if blkioStat.Op == opType {
-			return blkioStat.Value
-		}
-	}
-	return 0
-}
-
-func formatBytes(bytes uint64) string {
-	const unit = 1024
-	if bytes < unit {
-		return fmt.Sprintf("%d B", bytes)
-	}
-	div, exp := int64(unit), 0
-	for n := bytes / unit; n >= unit; n /= unit {
-		div *= unit
-		exp++
-	}
-	return fmt.Sprintf("%.1f %cB", float64(bytes)/float64(div), "KMGTPE"[exp])
 }

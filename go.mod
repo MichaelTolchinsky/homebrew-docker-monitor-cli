@@ -3,6 +3,7 @@ module docler-monitor-cli
 go 1.19
 
 require (
+	docker.io/go-docker v1.0.0
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/docker/distribution v2.8.2+incompatible // indirect
 	github.com/docker/docker v24.0.2+incompatible // indirect

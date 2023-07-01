@@ -16,7 +16,7 @@ universal_binaries:
 brews:
   -
     name: docker-monitor-cli
-    homepage: https://github.com/docker-monitor-cli/docker-monitor-cli
+    homepage: https://github.com/MichaelTolchinsky/docker-monitor-cli
     tap: 
       owner: docker-monitor-cli
       name: homebrew-docker-monitor-cli

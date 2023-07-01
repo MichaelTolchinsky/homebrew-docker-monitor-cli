@@ -18,7 +18,7 @@ brews:
     homepage: https://github.com/MichaelTolchinsky/docker-monitor-cli
     tap:
       owner: MichaelTolchinsky/docker-monitor-cli
-      name: homebrew-docker-monitor-cli
+      name: MichaelTolchinsky/docker-monitor-cli
     commit_author:
       name: MichaelTolchinsky
       email: mishatolchinski@gmail.com

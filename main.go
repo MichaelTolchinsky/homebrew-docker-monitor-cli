@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"docler-monitor-cli/helper"
+	"docker-monitor-cli/helper"
 	"encoding/json"
 	"fmt"
 	"os"

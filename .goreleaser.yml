@@ -1,0 +1,28 @@
+builds:
+  - binary: docker-monitor-cli
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  -
+    name: docker-monitor-cli
+    homepage: https://github.com/docker-monitor-cli/docker-monitor-cli
+    tap: 
+      owner: docker-monitor-cli
+      name: homebrew-docker-monitor-cli
+    commit_author:
+      name: MichaelTolchinsky
+      email: mishatolchinski@gmail.com
+
+checksum:
+  name_template: 'checksums.txt' 

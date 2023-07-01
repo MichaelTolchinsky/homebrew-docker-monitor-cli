@@ -1,4 +1,4 @@
-module docler-monitor-cli
+module docker-monitor-cli
 
 go 1.19
 

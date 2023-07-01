@@ -15,10 +15,10 @@ universal_binaries:
 
 brews:
   - name: docker-monitor-cli
-    homepage: https://github.com/MichaelTolchinsky/docker-monitor-cli
+    homepage: https://github.com/MichaelTolchinsky/homebrew-docker-monitor-cli
     tap:
-      owner: MichaelTolchinsky/docker-monitor-cli
-      name: MichaelTolchinsky/docker-monitor-cli
+      owner: MichaelTolchinsky/homebrew-docker-monitor-cli
+      name: MichaelTolchinsky/homebrew-docker-monitor-cli
     commit_author:
       name: MichaelTolchinsky
       email: mishatolchinski@gmail.com

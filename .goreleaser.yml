@@ -17,11 +17,15 @@ brews:
   - name: docker-monitor-cli
     homepage: https://github.com/MichaelTolchinsky/homebrew-docker-monitor-cli
     tap:
-      owner: MichaelTolchinsky/homebrew-docker-monitor-cli
-      name: MichaelTolchinsky/homebrew-docker-monitor-cli
+      owner: MichaelTolchinsky
+      name: homebrew-docker-monitor-cli
     commit_author:
       name: MichaelTolchinsky
       email: mishatolchinski@gmail.com
 
 checksum:
   name_template: "checksums.txt"
+
+before:
+  - go mod download
+  - go generate ./...

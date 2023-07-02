@@ -27,4 +27,6 @@ checksum:
   name_template: "checksums.txt"
 
 before:
-  - [go mod download, go generate ./...]
+  hooks:
+    - go mod download
+    - go generate ./...
